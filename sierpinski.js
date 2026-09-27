@@ -164,7 +164,7 @@ function divideSquare( x, y, size, count )
 
             for ( var col = 0; col < 3; col++ ) {
 
-                // Do not draw center square
+    
 
                 if ( row === 1 && col === 1 ) {
                     continue;
