@@ -31,19 +31,9 @@ window.onload = function init()
         alert( "WebGL isn't available" );
     }
 
-
-    //
-    // Configure WebGL
-    //
-
     gl.viewport( 0, 0, canvas.width, canvas.height );
 
     gl.clearColor( 1.0, 1.0, 1.0, 1.0 );
-
-
-    //
-    // Load shaders and initialize attribute buffers
-    //
 
     program = initShaders(
         gl,
@@ -53,22 +43,12 @@ window.onload = function init()
 
     gl.useProgram( program );
 
-
-    //
-    // Create buffer
-    //
-
     bufferId = gl.createBuffer();
 
     gl.bindBuffer(
         gl.ARRAY_BUFFER,
         bufferId
     );
-
-
-    //
-    // Associate shader variable with data buffer
-    //
 
     var vPosition =
         gl.getAttribLocation(
@@ -89,21 +69,12 @@ window.onload = function init()
         vPosition
     );
 
-
-    //
-    // Color uniform
-    //
-
     colorLoc =
         gl.getUniformLocation(
             program,
             "color"
         );
 
-
-    //
-    // Subdivision slider
-    //
 
     document.getElementById("slider").onchange =
         function(event)
@@ -113,11 +84,6 @@ window.onload = function init()
 
         createCarpet();
     };
-
-
-    //
-    // Color menu
-    //
 
     document.getElementById("ColorMenu").onchange =
         function(event)
@@ -134,10 +100,6 @@ window.onload = function init()
 
 
 
-//
-// Create Sierpinski Carpet
-//
-
 function createCarpet()
 {
     points = [];
@@ -149,10 +111,6 @@ function createCarpet()
         numTimesToSubdivide
     );
 
-
-    //
-    // Load data into GPU
-    //
 
     gl.bindBuffer(
         gl.ARRAY_BUFFER,
@@ -171,10 +129,6 @@ function createCarpet()
 
 
 
-//
-// Display one square
-//
-
 function square( a, b, c, d )
 {
     points.push(
@@ -184,14 +138,9 @@ function square( a, b, c, d )
 }
 
 
-
-//
-// Divide square
-//
-
 function divideSquare( x, y, size, count )
 {
-    // check for end of recursion
+
 
     if ( count === 0 ) {
 
@@ -234,10 +183,6 @@ function divideSquare( x, y, size, count )
 }
 
 
-
-//
-// Render
-//
 
 function render()
 {
